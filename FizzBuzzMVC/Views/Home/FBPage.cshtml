@@ -1,0 +1,42 @@
+﻿@model FizzBuzzMVC.Models.FizzBuzz
+
+<div class="row">
+    <div class="col">
+        <h1>FizzBuzz!</h1>
+        <p>Enter 2 numbers.</p>
+    </div>
+    <div class="col">
+        <h2>Enter Numbers</h2>
+        @*Form Goes Here*@
+        <form asp-controller="Home" asp-action="FBPAge" method="post">
+            <div class="form-group">
+                <label asp-for="FizzValue">Fizz Value</label>
+                <input type="number" asp-for="FizzValue" class="form-control" placeholder="Enter Fizz" value="@Model.FizzValue" />
+            </div>
+            <div class="form-group">
+                <label asp-for="BuzzValue">Buzz Value</label>
+                <input type="number" asp-for="BuzzValue" class="form-control" placeholder="Enter Buzz" value="@Model.BuzzValue" />
+            </div>
+
+            <button type="submit" class="btn-primary btn-dark">Submit</button>
+        </form>
+        <h2>Results</h2>
+        <div class="table-responsive">
+            @*Table Goes Here*@
+            @if (@Model.Result.Count > 0)
+            {
+                <table class="table table-striped">
+                    <thead>
+                        <tr><th colspan="5" class="text-center">Fizz Buzz Results</th></tr>
+                    </thead>
+                    @for (int i=0; i< Model.Result.Count(); i += 5)
+                    {
+                        <tr><td>@Model.Result[i]</td><td>@Model.Result[i + 1]</td><td>@Model.Result[i + 2]</td><td>@Model.Result[i + 3]</td><td>@Model.Result[i + 4]</td></tr>
+                    }
+
+                </table>
+            }
+        </div>
+        
+    </div>
+</div>
